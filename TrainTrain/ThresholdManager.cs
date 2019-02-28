@@ -2,7 +2,7 @@ using System;
 
 namespace TrainTrain
 {
-    public static class ThreasholdManager
+    public static class ThresholdManager
     {
         public static double GetMaxRes()
         {
