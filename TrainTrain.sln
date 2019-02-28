@@ -13,11 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HassanCehef.TrainDataServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HassanCehef.BookingReferenceService", "HassanCehef\HassanCehef.BookingReferenceService\HassanCehef.BookingReferenceService.csproj", "{4CEACF36-1C9C-4022-936F-D48F7A62B930}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain.Core", "TrainTrain.Core\TrainTrain.Core.csproj", "{E099624A-3EFC-470A-BABF-4C19A46A234E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain", "TrainTrain\TrainTrain.csproj", "{D084499B-38BF-451D-9603-B10DD7CD15BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain.Tests", "TrainTrain.Tests\TrainTrain.Tests.csproj", "{D9C9D7BD-9BE3-4A91-82F5-B07AFBEA98A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain.Api", "TrainTrain.Api\TrainTrain.Api.csproj", "{38B851FE-E07C-48F5-BB6A-5EC0EE312837}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain.Api.Core", "TrainTrain.Api.Core\TrainTrain.Api.Core.csproj", "{E44BDC0F-0117-4C17-B386-82558151C685}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain.Test", "TrainTrain.Test\TrainTrain.Test.csproj", "{36FBAA9F-EF0C-41C4-9FE5-FDF5A291D278}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,18 +33,18 @@ Global
 		{4CEACF36-1C9C-4022-936F-D48F7A62B930}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CEACF36-1C9C-4022-936F-D48F7A62B930}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CEACF36-1C9C-4022-936F-D48F7A62B930}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E099624A-3EFC-470A-BABF-4C19A46A234E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E099624A-3EFC-470A-BABF-4C19A46A234E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E099624A-3EFC-470A-BABF-4C19A46A234E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E099624A-3EFC-470A-BABF-4C19A46A234E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9C9D7BD-9BE3-4A91-82F5-B07AFBEA98A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9C9D7BD-9BE3-4A91-82F5-B07AFBEA98A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9C9D7BD-9BE3-4A91-82F5-B07AFBEA98A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9C9D7BD-9BE3-4A91-82F5-B07AFBEA98A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E44BDC0F-0117-4C17-B386-82558151C685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E44BDC0F-0117-4C17-B386-82558151C685}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E44BDC0F-0117-4C17-B386-82558151C685}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E44BDC0F-0117-4C17-B386-82558151C685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D084499B-38BF-451D-9603-B10DD7CD15BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D084499B-38BF-451D-9603-B10DD7CD15BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D084499B-38BF-451D-9603-B10DD7CD15BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D084499B-38BF-451D-9603-B10DD7CD15BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B851FE-E07C-48F5-BB6A-5EC0EE312837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B851FE-E07C-48F5-BB6A-5EC0EE312837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B851FE-E07C-48F5-BB6A-5EC0EE312837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B851FE-E07C-48F5-BB6A-5EC0EE312837}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36FBAA9F-EF0C-41C4-9FE5-FDF5A291D278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36FBAA9F-EF0C-41C4-9FE5-FDF5A291D278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36FBAA9F-EF0C-41C4-9FE5-FDF5A291D278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36FBAA9F-EF0C-41C4-9FE5-FDF5A291D278}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

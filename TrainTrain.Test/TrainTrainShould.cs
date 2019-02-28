@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TrainTrain.Tests
+﻿namespace TrainTrain.Test
 {
     public class TrainTrainShould
     {
