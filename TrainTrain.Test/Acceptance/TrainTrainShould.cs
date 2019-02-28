@@ -56,7 +56,6 @@ namespace TrainTrain.Test.Acceptance
         }
 
         [Test]
-        [Ignore("While refactoring")]
         public void Reserve_all_seats_in_the_same_coach()
         {
             const int seatsRequestedCount = 2;

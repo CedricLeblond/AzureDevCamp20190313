@@ -77,9 +77,9 @@ namespace TrainTrain
             return result;
         }
 
-        public static List<Seat> AdaptTrainTopology(string trainTopology)
+        public static Dictionary<string, Coach> AdaptTrainTopology(string trainTopology)
         {
-            var seats = new List<Seat>();
+            var coaches = new Dictionary<string, Coach>();
             //var sample =
             //"{\"seats\": {\"1A\": {\"booking_reference\": \"\", \"seat_number\": \"1\", \"coach\": \"A\"}, \"2A\": {\"booking_reference\": \"\", \"seat_number\": \"2\", \"coach\": \"A\"}}}";
 
@@ -93,10 +93,15 @@ namespace TrainTrain
                 foreach (var stuff in allStuffs)
                 {
                     var seatPoco = stuff.Value.ToObject<SeatJsonPoco>();
-                    seats.Add(new Seat(seatPoco.coach, Int32.Parse(seatPoco.seat_number), seatPoco.booking_reference));
+                    var seat = new Seat(seatPoco.coach, Int32.Parse(seatPoco.seat_number), seatPoco.booking_reference);
+                    if (!coaches.ContainsKey(seatPoco.coach))
+                    {
+                        coaches[seatPoco.coach] = new Coach(seatPoco.coach);
+                    }
+                    coaches[seatPoco.coach].AddSeat(seat);
                 }
             }
-            return seats;
+            return coaches;
         }
     }
 }
