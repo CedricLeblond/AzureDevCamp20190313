@@ -1,41 +1,40 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TrainTrain
 {
     public class Train
     {
-        public Train(string trainTopology)
+        public Train(string trainId, List<Seat> seats)
         {
-            Seats = new List<Seat>();
-            //var sample =
-            //"{\"seats\": {\"1A\": {\"booking_reference\": \"\", \"seat_number\": \"1\", \"coach\": \"A\"}, \"2A\": {\"booking_reference\": \"\", \"seat_number\": \"2\", \"coach\": \"A\"}}}";
-
-            // Forced to workaround with dynamic parsing since the received JSON is invalid format ;-(
-            dynamic parsed = JsonConvert.DeserializeObject(trainTopology);
-
-            foreach (var token in ((Newtonsoft.Json.Linq.JContainer)parsed))
-            {
-                var allStuffs = ((Newtonsoft.Json.Linq.JObject) ((Newtonsoft.Json.Linq.JContainer) token).First);
-
-                foreach (var stuff in allStuffs)
-                {
-                    var seat = stuff.Value.ToObject<SeatJsonPoco>();
-                    Seats.Add(new Seat(seat.coach, int.Parse(seat.seat_number), seat.booking_reference));
-                    if (!string.IsNullOrEmpty(seat.booking_reference))
-                    {
-                        ReservedSeats++;
-                    }
-                }
-            }
+            TrainId = trainId;
+            Seats = seats;
         }
 
-        public int GetMaxSeat()
+        private int GetMaxSeat()
         {
             return Seats.Count;
         }
 
-        public int ReservedSeats { get; private set; }
-        public List<Seat> Seats { get; private set; }
+        private int ReservedSeats
+        {
+            get { return Seats.Count(s => !string.IsNullOrEmpty(s.BookingRef)); }
+        }
+
+        public string TrainId { get; }
+        public List<Seat> Seats { get; }
+
+        public bool DoesNotExceedTrainMaxCapacity(int seatsRequestedCount)
+        {
+            return ReservedSeats + seatsRequestedCount <= Math.Floor(ThresholdManager.GetMaxRes() * GetMaxSeat());
+        }
+
+        public ReservationAttempt BuildReservationAttempt(int seatsRequestedCount)
+        {
+            var availableSeats = Seats.Where(s => s.IsAvailable()).Take(seatsRequestedCount);
+
+            return new ReservationAttempt(TrainId, seatsRequestedCount, availableSeats);
+        }
     }
 }

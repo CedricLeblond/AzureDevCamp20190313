@@ -13,7 +13,7 @@ namespace TrainTrain.Api.Controllers
             [FromQuery(Name = "numberOfSeats")] int numberOfSeats)
         {
             var manager = new WebTicketManager();
-            return await manager.Reserve(trainId, numberOfSeats);
+            return SeatsReservationAdapter.AdaptReservation(await manager.Reserve(trainId, numberOfSeats));
         }
     }
 }

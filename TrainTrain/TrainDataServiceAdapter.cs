@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace TrainTrain
 {
@@ -16,7 +17,7 @@ namespace TrainTrain
             _uriTrainDataService = uriTrainDataService;
         }
 
-        public async Task<string> GetTrain(string trainId)
+        public async Task<Train> GetTrain(string trainId)
         {
             using (var client = new HttpClient())
             {
@@ -28,11 +29,11 @@ namespace TrainTrain
                 // HTTP GET
                 var response = await client.GetAsync($"api/data_for_train/{trainId}");
                 response.EnsureSuccessStatusCode();
-                return await response.Content.ReadAsStringAsync();
+                return new Train(trainId, AdaptTrainTopology(await response.Content.ReadAsStringAsync()));
             }
         }
 
-        public async Task BookSeats(string trainId, string bookingReference, List<Seat> availableSeats)
+        public async Task BookSeats(ReservationAttempt reservationAttempt)
         {
             using (var client = new HttpClient())
             {
@@ -43,7 +44,7 @@ namespace TrainTrain
 
                 // HTTP POST
                 HttpContent resJson = new StringContent(
-                    BuildPostContent(trainId, bookingReference, availableSeats), Encoding.UTF8,
+                    BuildPostContent(reservationAttempt.TrainId, reservationAttempt.BookingReference, reservationAttempt.Seats), Encoding.UTF8,
                     "application/json");
                 var response = await client.PostAsync("reserve", resJson);
 
@@ -74,6 +75,28 @@ namespace TrainTrain
             var result = $"{{\r\n\t\"train_id\": \"{trainId}\",\r\n\t\"seats\": {seats},\r\n\t\"booking_reference\": \"{bookingRef}\"\r\n}}";
 
             return result;
+        }
+
+        public static List<Seat> AdaptTrainTopology(string trainTopology)
+        {
+            var seats = new List<Seat>();
+            //var sample =
+            //"{\"seats\": {\"1A\": {\"booking_reference\": \"\", \"seat_number\": \"1\", \"coach\": \"A\"}, \"2A\": {\"booking_reference\": \"\", \"seat_number\": \"2\", \"coach\": \"A\"}}}";
+
+            // Forced to workaround with dynamic parsing since the received JSON is invalid format ;-(
+            dynamic parsed = JsonConvert.DeserializeObject(trainTopology);
+
+            foreach (var token in ((Newtonsoft.Json.Linq.JContainer) parsed))
+            {
+                var allStuffs = ((Newtonsoft.Json.Linq.JObject) ((Newtonsoft.Json.Linq.JContainer) token).First);
+
+                foreach (var stuff in allStuffs)
+                {
+                    var seatPoco = stuff.Value.ToObject<SeatJsonPoco>();
+                    seats.Add(new Seat(seatPoco.coach, Int32.Parse(seatPoco.seat_number), seatPoco.booking_reference));
+                }
+            }
+            return seats;
         }
     }
 }

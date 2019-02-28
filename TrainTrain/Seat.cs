@@ -12,5 +12,10 @@
             SeatNumber = seatNumber;
             BookingRef = bookingRef;
         }
+
+        public bool IsAvailable()
+        {
+            return BookingRef == "";
+        }
     }
 }
