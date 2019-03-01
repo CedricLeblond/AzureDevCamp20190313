@@ -6,7 +6,7 @@ using Value.Shared;
 
 namespace TrainTrain.Domain
 {
-    public class Train: ValueType<Train>
+    public class Train : ValueType<Train>
     {
         public Train(TrainId trainId, Dictionary<string, Coach> coaches)
         {
@@ -39,7 +39,6 @@ namespace TrainTrain.Domain
 
         public ReservationAttempt BuildReservationAttempt(SeatsRequested seatsRequested)
         {
-
             foreach (var coach in Coaches.Values)
             {
                 var reservationAttempt = coach.BuildReservationAttempt(TrainId, seatsRequested);

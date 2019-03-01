@@ -32,6 +32,7 @@ namespace TrainTrain.Domain
                     return reservationAttempt.Confirm();
                 }
             }
+
             return new ReservationFailure(trainId);
         }
     }

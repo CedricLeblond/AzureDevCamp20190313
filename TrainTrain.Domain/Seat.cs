@@ -16,13 +16,13 @@ namespace TrainTrain.Domain
             BookingReference = bookingReference;
         }
 
-        public Seat(string coachName, int seatNumber):this(coachName, seatNumber, new BookingReference(string.Empty))
+        public Seat(string coachName, int seatNumber) : this(coachName, seatNumber, new BookingReference())
         {
         }
 
         public bool IsAvailable()
         {
-            return string.IsNullOrEmpty(BookingReference.Id);
+            return !BookingReference.IsValid();
         }
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()

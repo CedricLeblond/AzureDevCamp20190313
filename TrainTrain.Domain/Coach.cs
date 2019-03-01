@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Value;
 
@@ -8,9 +7,9 @@ namespace TrainTrain.Domain
     public class Coach : ValueType<Coach>
     {
         public List<Seat> Seats { get; }
-        public string CoachName { get; }
+        private string CoachName { get; }
 
-        public Coach(string coachName):this(coachName, new List<Seat>())
+        public Coach(string coachName) : this(coachName, new List<Seat>())
         {
         }
 
@@ -20,9 +19,10 @@ namespace TrainTrain.Domain
             Seats = seats;
         }
 
+        // DDD Pattern: Closure Of Operation
         public Coach AddSeat(Seat seat)
         {
-            return new Coach(seat.CoachName, new List<Seat>(Seats) { seat });
+            return new Coach(seat.CoachName, new List<Seat>(Seats) {seat});
         }
 
         public ReservationAttempt BuildReservationAttempt(TrainId trainId, SeatsRequested seatsRequested)

@@ -3,18 +3,18 @@ using Value;
 
 namespace TrainTrain.Domain
 {
-    public class SeatsRequested: ValueType<SeatsRequested>
+    public class SeatsRequested : ValueType<SeatsRequested>
     {
         public int Count { get; }
 
-        public SeatsRequested(int seatsRequestedCount)
+        public SeatsRequested(int count)
         {
-            Count = seatsRequestedCount;
+            Count = count;
         }
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            return new object[] { Count };
+            return new object[] {Count};
         }
     }
 }

@@ -25,7 +25,7 @@ namespace TrainTrain.Domain
         public void AssignBookingReference(BookingReference bookingReference)
         {
             BookingReference = bookingReference;
-            List<Seat> seats = new List<Seat>();
+            var seats = new List<Seat>();
             foreach (var seat in Seats)
             {
                 seats.Add(new Seat(seat.CoachName, seat.SeatNumber, BookingReference));
