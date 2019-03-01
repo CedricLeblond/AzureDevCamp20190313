@@ -54,4 +54,4 @@ Pour les microservices on doit respecter quelques règles:
 * Un ou deux comportements par microservice
 * Complètement testé
 * Une architecture logicielle hexagonale
-* Montrer le solution avec Hexagone
+* Montrer la solution avec Hexagone
