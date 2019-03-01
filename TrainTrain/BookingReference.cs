@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Value;
 
-namespace TrainTrain.Infra
+namespace TrainTrain.Domain
 {
     public class BookingReference : ValueType<BookingReference>
     {

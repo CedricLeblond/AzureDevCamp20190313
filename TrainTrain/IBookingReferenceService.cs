@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using TrainTrain.Infra;
 
 namespace TrainTrain.Domain
 {

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using TrainTrain.Infra;
 using Value;
 
 namespace TrainTrain.Domain
