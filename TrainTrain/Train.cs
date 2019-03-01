@@ -25,7 +25,7 @@ namespace TrainTrain
         public string TrainId { get; }
         public List<Seat> Seats { get; }
 
-        public bool DoesNotExceedTrainMaxCapacity(int seatsRequestedCount)
+        public bool DoesNotExceedOverallTrainCapacity(int seatsRequestedCount)
         {
             return ReservedSeats + seatsRequestedCount <= Math.Floor(ThresholdManager.GetMaxRes() * GetMaxSeat());
         }

@@ -23,7 +23,7 @@ namespace TrainTrain
         {
             var train = await _trainDataService.GetTrain(trainId);
 
-            if (train.DoesNotExceedTrainMaxCapacity(seatsRequestedCount))
+            if (train.DoesNotExceedOverallTrainCapacity(seatsRequestedCount))
             {
                 var reservationAttempt = train.BuildReservationAttempt(seatsRequestedCount);
 
