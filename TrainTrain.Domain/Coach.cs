@@ -6,7 +6,8 @@ namespace TrainTrain.Domain
 {
     public class Coach : ValueType<Coach>
     {
-        public List<Seat> Seats { get; }
+        private readonly List<Seat> _seats;
+        public IReadOnlyCollection<Seat> Seats => _seats;
         private string CoachName { get; }
 
         public Coach(string coachName) : this(coachName, new List<Seat>())
@@ -16,7 +17,8 @@ namespace TrainTrain.Domain
         public Coach(string coachName, List<Seat> seats)
         {
             CoachName = coachName;
-            Seats = seats;
+            _seats = seats;
+            _seats = seats;
         }
 
         // DDD Pattern: Closure Of Operation
@@ -34,7 +36,7 @@ namespace TrainTrain.Domain
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            return new object[] {CoachName, new ListByValue<Seat>(Seats)};
+            return new object[] {CoachName, new ListByValue<Seat>(_seats)};
         }
     }
 }

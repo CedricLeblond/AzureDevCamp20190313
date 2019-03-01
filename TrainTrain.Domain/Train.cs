@@ -8,10 +8,12 @@ namespace TrainTrain.Domain
 {
     public class Train : ValueType<Train>
     {
+        private readonly Dictionary<string, Coach> _coaches;
+
         public Train(TrainId trainId, Dictionary<string, Coach> coaches)
         {
             TrainId = trainId;
-            Coaches = coaches;
+            _coaches = coaches;
         }
 
         private int GetMaxSeat()
@@ -25,7 +27,7 @@ namespace TrainTrain.Domain
         }
 
         private TrainId TrainId { get; }
-        public Dictionary<string, Coach> Coaches { get; }
+        public IReadOnlyDictionary<string, Coach> Coaches => _coaches;
 
         private List<Seat> Seats
         {
@@ -51,7 +53,7 @@ namespace TrainTrain.Domain
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            return new object[] {TrainId, new DictionaryByValue<string, Coach>(Coaches)};
+            return new object[] {TrainId, new DictionaryByValue<string, Coach>(_coaches)};
         }
     }
 }

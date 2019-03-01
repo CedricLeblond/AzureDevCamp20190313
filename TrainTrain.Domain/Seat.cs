@@ -7,7 +7,7 @@ namespace TrainTrain.Domain
     {
         public string CoachName { get; }
         public int SeatNumber { get; }
-        public BookingReference BookingReference { get; }
+        private BookingReference BookingReference { get; }
 
         public Seat(string coachName, int seatNumber, BookingReference bookingReference)
         {
