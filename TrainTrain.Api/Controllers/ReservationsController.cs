@@ -1,13 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TrainTrain.Api.Models;
-using TrainTrain.Domain;
 using TrainTrain.Infra;
 
 namespace TrainTrain.Api.Controllers
 {
-    
     [Route("api/[controller]")]
     public class ReservationsController : Controller
     {
@@ -17,6 +13,7 @@ namespace TrainTrain.Api.Controllers
         {
             _seatsReservationAdapter = seatsReservationAdapter;
         }
+
         [HttpGet]
         public async Task<ActionResult<string>> Get([FromQuery(Name = "trainId")] string trainId,
             [FromQuery(Name = "numberOfSeats")] int numberOfSeats)

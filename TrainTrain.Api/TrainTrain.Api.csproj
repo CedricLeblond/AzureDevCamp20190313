@@ -16,7 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TrainTrain\TrainTrain.csproj" />
+    <ProjectReference Include="..\TrainTrain.Infra\TrainTrain.Infra.csproj" />
+    <ProjectReference Include="..\TrainTrain\TrainTrain.Domain.csproj" />
   </ItemGroup>
 
 </Project>

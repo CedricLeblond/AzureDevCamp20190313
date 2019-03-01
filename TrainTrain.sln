@@ -10,11 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain", "TrainTrain\TrainTrain.csproj", "{D084499B-38BF-451D-9603-B10DD7CD15BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain.Domain", "TrainTrain\TrainTrain.Domain.csproj", "{D084499B-38BF-451D-9603-B10DD7CD15BC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain.Api", "TrainTrain.Api\TrainTrain.Api.csproj", "{38B851FE-E07C-48F5-BB6A-5EC0EE312837}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain.Test", "TrainTrain.Test\TrainTrain.Test.csproj", "{36FBAA9F-EF0C-41C4-9FE5-FDF5A291D278}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrainTrain.Infra", "TrainTrain.Infra\TrainTrain.Infra.csproj", "{02F93556-2E83-4BE0-AE8E-398CFCEF3770}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,10 @@ Global
 		{36FBAA9F-EF0C-41C4-9FE5-FDF5A291D278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36FBAA9F-EF0C-41C4-9FE5-FDF5A291D278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36FBAA9F-EF0C-41C4-9FE5-FDF5A291D278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02F93556-2E83-4BE0-AE8E-398CFCEF3770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02F93556-2E83-4BE0-AE8E-398CFCEF3770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02F93556-2E83-4BE0-AE8E-398CFCEF3770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02F93556-2E83-4BE0-AE8E-398CFCEF3770}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
