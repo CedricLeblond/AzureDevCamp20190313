@@ -71,7 +71,7 @@
 * Création du type coach en TDD
 * Test corriger
 * Branche: Livecode3_bug_fixed
-* K8s: On repousse à nouveau dans le K8s
+* K8s: On repousse à nouveau dans le K8s, mais avec du load balancing des services
 
 ## Conclusion "Peut-on aller plus loin ...""
 
