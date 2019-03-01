@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using TrainTrain.Infra;
 
 namespace TrainTrain.Domain
 {
     public class Reservation
     {
-        public string TrainId { get; }
-        public string BookingReference { get; }
+        public TrainId TrainId { get; }
+        public BookingReference BookingReference { get; }
         public List<Seat> Seats { get; }
 
-        public Reservation(string trainId, string bookingReference, List<Seat> seats)
+        public Reservation(TrainId trainId, BookingReference bookingReference, List<Seat> seats)
         {
             TrainId = trainId;
             BookingReference = bookingReference;

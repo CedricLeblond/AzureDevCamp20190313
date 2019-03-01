@@ -8,7 +8,7 @@ namespace TrainTrain.Domain
 {
     public class Train: ValueType<Train>
     {
-        public Train(string trainId, Dictionary<string, Coach> coaches)
+        public Train(TrainId trainId, Dictionary<string, Coach> coaches)
         {
             TrainId = trainId;
             Coaches = coaches;
@@ -21,10 +21,10 @@ namespace TrainTrain.Domain
 
         private int ReservedSeats
         {
-            get { return Seats.Count(s => !string.IsNullOrEmpty(s.BookingRef)); }
+            get { return Seats.Count(s => !s.IsAvailable()); }
         }
 
-        private string TrainId { get; }
+        private TrainId TrainId { get; }
         public Dictionary<string, Coach> Coaches { get; }
 
         private List<Seat> Seats
@@ -32,22 +32,22 @@ namespace TrainTrain.Domain
             get { return Coaches.Values.SelectMany(c => c.Seats).ToList(); }
         }
 
-        public bool DoesNotExceedOverallTrainCapacity(int seatsRequestedCount)
+        public bool DoesNotExceedOverallTrainCapacity(SeatsRequested seatsRequested)
         {
-            return ReservedSeats + seatsRequestedCount <= Math.Floor(ThresholdManager.GetMaxRes() * GetMaxSeat());
+            return ReservedSeats + seatsRequested.Count <= Math.Floor(ThresholdManager.GetMaxRes() * GetMaxSeat());
         }
 
-        public ReservationAttempt BuildReservationAttempt(int seatsRequestedCount)
+        public ReservationAttempt BuildReservationAttempt(SeatsRequested seatsRequested)
         {
 
             foreach (var coach in Coaches.Values)
             {
-                var reservationAttempt = coach.BuildReservationAttempt(TrainId, seatsRequestedCount);
+                var reservationAttempt = coach.BuildReservationAttempt(TrainId, seatsRequested);
                 if (reservationAttempt.IsFulFilled())
                     return reservationAttempt;
             }
 
-            return new ReservationAttemptFailure(TrainId, seatsRequestedCount);
+            return new ReservationAttemptFailure(TrainId, seatsRequested);
         }
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()

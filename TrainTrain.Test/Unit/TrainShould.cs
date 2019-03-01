@@ -8,12 +8,12 @@ namespace TrainTrain.Test.Unit
 {
     internal class TrainShould
     {
-        private const string TrainId = "9043-2019-03-13";
+        private readonly TrainId _trainId = new TrainId("9043-2019-03-13");
 
         [Test]
         public void Expose_Coaches()
         {
-            var train = new Train(TrainId,
+            var train = new Train(_trainId,
                 TrainDataServiceAdapter.AdaptTrainTopology(TrainTopologyGenerator
                     .With_2_coaches_and_9_seats_already_reserved_in_the_first_coach()));
 
@@ -25,11 +25,11 @@ namespace TrainTrain.Test.Unit
         [Test]
         public void Be_value_object()
         {
-            var train = new Train(TrainId,
+            var train = new Train(_trainId,
                 TrainDataServiceAdapter.AdaptTrainTopology(TrainTopologyGenerator
                     .With_2_coaches_and_9_seats_already_reserved_in_the_first_coach()));
 
-            var sameTrainTopology = new Train(TrainId,
+            var sameTrainTopology = new Train(_trainId,
                 TrainDataServiceAdapter.AdaptTrainTopology(TrainTopologyGenerator
                     .With_2_coaches_and_9_seats_already_reserved_in_the_first_coach()));
 

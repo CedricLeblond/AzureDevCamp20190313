@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
+using TrainTrain.Infra;
 
 namespace TrainTrain.Domain
 {
     public interface IBookingReferenceService
     {
-        Task<string> GetBookingReference();
+        Task<BookingReference> GetBookingReference();
     }
 }

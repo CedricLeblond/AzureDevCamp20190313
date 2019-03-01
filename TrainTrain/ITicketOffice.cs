@@ -4,6 +4,6 @@ namespace TrainTrain.Domain
 {
     public interface ITicketOffice
     {
-        Task<Reservation> Reserve(string trainId, int seatsRequestedCount);
+        Task<Reservation> Reserve(TrainId trainId, SeatsRequested seatsRequested);
     }
 }

@@ -25,11 +25,11 @@ namespace TrainTrain.Domain
             return new Coach(seat.CoachName, new List<Seat>(Seats) { seat });
         }
 
-        public ReservationAttempt BuildReservationAttempt(string trainId, int seatsRequestedCount)
+        public ReservationAttempt BuildReservationAttempt(TrainId trainId, SeatsRequested seatsRequested)
         {
-            var availableSeats = Seats.Where(s => s.IsAvailable()).Take(seatsRequestedCount);
+            var availableSeats = Seats.Where(s => s.IsAvailable()).Take(seatsRequested.Count);
 
-            return new ReservationAttempt(trainId, seatsRequestedCount, availableSeats);
+            return new ReservationAttempt(trainId, seatsRequested, availableSeats);
         }
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()

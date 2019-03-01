@@ -15,7 +15,7 @@ namespace TrainTrain.Infra
             _uriBookingReferenceService = uriBookingReferenceService;
         }
 
-        public async Task<string> GetBookingReference()
+        public async Task<BookingReference> GetBookingReference()
         {
             using (var client = new HttpClient())
             {
@@ -27,7 +27,7 @@ namespace TrainTrain.Infra
                 // HTTP GET
                 var response = await client.GetAsync("/booking_reference");
                 response.EnsureSuccessStatusCode();
-                return await response.Content.ReadAsStringAsync();
+                return new BookingReference(await response.Content.ReadAsStringAsync());
             }
         }
     }

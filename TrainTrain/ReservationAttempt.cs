@@ -1,28 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TrainTrain.Infra;
 
 namespace TrainTrain.Domain
 {
     public class ReservationAttempt
     {
-        public string TrainId { get; }
+        public TrainId TrainId { get; }
         public List<Seat> Seats { get; private set; }
-        public string BookingReference { get; private set; }
-        public int SeatsRequestedCount { get; }
+        public BookingReference BookingReference { get; private set; }
+        public SeatsRequested SeatsRequested { get; }
 
-        public ReservationAttempt(string trainId, int seatsRequestedCount, IEnumerable<Seat> seats)
+        public ReservationAttempt(TrainId trainId, SeatsRequested seatsRequestedCount, IEnumerable<Seat> seats)
         {
             TrainId = trainId;
-            SeatsRequestedCount = seatsRequestedCount;
+            SeatsRequested = seatsRequestedCount;
             Seats = seats.ToList();
         }
 
         public bool IsFulFilled()
         {
-            return Seats.Count == SeatsRequestedCount;
+            return Seats.Count == SeatsRequested.Count;
         }
 
-        public void AssignBookingReference(string bookingReference)
+        public void AssignBookingReference(BookingReference bookingReference)
         {
             BookingReference = bookingReference;
             List<Seat> seats = new List<Seat>();

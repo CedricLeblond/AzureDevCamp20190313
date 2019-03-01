@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TrainTrain.Infra;
 using Value;
 
 namespace TrainTrain.Domain
@@ -7,27 +8,27 @@ namespace TrainTrain.Domain
     {
         public string CoachName { get; }
         public int SeatNumber { get; }
-        public string BookingRef { get; }
+        public BookingReference BookingReference { get; }
 
-        public Seat(string coachName, int seatNumber, string bookingRef)
+        public Seat(string coachName, int seatNumber, BookingReference bookingReference)
         {
             CoachName = coachName;
             SeatNumber = seatNumber;
-            BookingRef = bookingRef;
+            BookingReference = bookingReference;
         }
 
-        public Seat(string coachName, int seatNumber):this(coachName, seatNumber, string.Empty)
+        public Seat(string coachName, int seatNumber):this(coachName, seatNumber, new BookingReference(string.Empty))
         {
         }
 
         public bool IsAvailable()
         {
-            return string.IsNullOrEmpty(BookingRef);
+            return string.IsNullOrEmpty(BookingReference.Id);
         }
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            return new object[] {CoachName, SeatNumber, BookingRef};
+            return new object[] {CoachName, SeatNumber, BookingReference};
         }
     }
 }

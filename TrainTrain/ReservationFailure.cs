@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using TrainTrain.Infra;
 
 namespace TrainTrain.Domain
 {
     public class ReservationFailure : Reservation
     {
-        public ReservationFailure(string trainId):base(trainId, string.Empty, new List<Seat>())
+        public ReservationFailure(TrainId trainId):base(trainId, new BookingReference(), new List<Seat>())
         {
             
         }

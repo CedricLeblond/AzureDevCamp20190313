@@ -17,7 +17,7 @@ namespace TrainTrain.Infra
         public static string AdaptReservation(Reservation reservation)
         {
             return
-                $"{{\"train_id\": \"{reservation.TrainId}\", \"booking_reference\": \"{reservation.BookingReference}\", \"seats\": {DumpSeats(reservation.Seats)}}}";
+                $"{{\"train_id\": \"{reservation.TrainId.Id}\", \"booking_reference\": \"{reservation.BookingReference.Id}\", \"seats\": {DumpSeats(reservation.Seats)}}}";
         }
 
         private static string DumpSeats(IEnumerable<Seat> seats)
@@ -46,7 +46,7 @@ namespace TrainTrain.Infra
 
         public async Task<string> ReserveAsync(string trainId, int seatsRequestedCount)
         {
-            return AdaptReservation(await _ticketOffice.Reserve(trainId, seatsRequestedCount));
+            return AdaptReservation(await _ticketOffice.Reserve(new TrainId(trainId), new SeatsRequested(seatsRequestedCount)));
         }
     }
 }

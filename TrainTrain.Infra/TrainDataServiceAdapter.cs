@@ -18,7 +18,7 @@ namespace TrainTrain.Infra
             _uriTrainDataService = uriTrainDataService;
         }
 
-        public async Task<Train> GetTrain(string trainId)
+        public async Task<Train> GetTrain(TrainId trainId)
         {
             using (var client = new HttpClient())
             {
@@ -45,7 +45,7 @@ namespace TrainTrain.Infra
 
                 // HTTP POST
                 HttpContent resJson = new StringContent(
-                    BuildPostContent(reservationAttempt.TrainId, reservationAttempt.BookingReference, reservationAttempt.Seats), Encoding.UTF8,
+                    BuildPostContent(reservationAttempt.TrainId.Id, reservationAttempt.BookingReference.Id, reservationAttempt.Seats), Encoding.UTF8,
                     "application/json");
                 var response = await client.PostAsync("reserve", resJson);
 
@@ -94,7 +94,7 @@ namespace TrainTrain.Infra
                 foreach (var stuff in allStuffs)
                 {
                     var seatPoco = stuff.Value.ToObject<SeatJsonPoco>();
-                    var seat = new Seat(seatPoco.coach, Int32.Parse(seatPoco.seat_number), seatPoco.booking_reference);
+                    var seat = new Seat(seatPoco.coach, int.Parse(seatPoco.seat_number), new BookingReference(seatPoco.booking_reference));
                     if (!coaches.ContainsKey(seatPoco.coach))
                     {
                         coaches[seatPoco.coach] = new Coach(seatPoco.coach);

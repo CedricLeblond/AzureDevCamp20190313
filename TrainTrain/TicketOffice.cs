@@ -13,13 +13,13 @@ namespace TrainTrain.Domain
             _bookingReferenceService = bookingReferenceService;
         }
 
-        public async Task<Reservation> Reserve(string trainId, int seatsRequestedCount)
+        public async Task<Reservation> Reserve(TrainId trainId, SeatsRequested seatsRequested)
         {
             var train = await _trainDataService.GetTrain(trainId);
 
-            if (train.DoesNotExceedOverallTrainCapacity(seatsRequestedCount))
+            if (train.DoesNotExceedOverallTrainCapacity(seatsRequested))
             {
-                var reservationAttempt = train.BuildReservationAttempt(seatsRequestedCount);
+                var reservationAttempt = train.BuildReservationAttempt(seatsRequested);
 
                 if (reservationAttempt.IsFulFilled())
                 {
