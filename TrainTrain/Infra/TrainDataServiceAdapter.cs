@@ -5,8 +5,9 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using TrainTrain.Domain;
 
-namespace TrainTrain
+namespace TrainTrain.Infra
 {
     public class TrainDataServiceAdapter : ITrainDataService
     {
@@ -98,7 +99,7 @@ namespace TrainTrain
                     {
                         coaches[seatPoco.coach] = new Coach(seatPoco.coach);
                     }
-                    coaches[seatPoco.coach].AddSeat(seat);
+                    coaches[seatPoco.coach]  = coaches[seatPoco.coach].AddSeat(seat);
                 }
             }
             return coaches;

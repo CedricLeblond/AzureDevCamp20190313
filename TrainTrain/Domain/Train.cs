@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Value;
 
-namespace TrainTrain
+namespace TrainTrain.Domain
 {
-    public class Train
+    public class Train: ValueType<Train>
     {
         public Train(string trainId, Dictionary<string, Coach> coaches)
         {
@@ -22,9 +23,10 @@ namespace TrainTrain
             get { return Seats.Count(s => !string.IsNullOrEmpty(s.BookingRef)); }
         }
 
-        public string TrainId { get; }
-        public Dictionary<string, Coach> Coaches { get; }
-        public List<Seat> Seats
+        private string TrainId { get; }
+        private Dictionary<string, Coach> Coaches { get; }
+
+        private List<Seat> Seats
         {
             get { return Coaches.Values.SelectMany(c => c.Seats).ToList(); }
         }
@@ -46,28 +48,10 @@ namespace TrainTrain
 
             return new ReservationAttemptFailure(TrainId, seatsRequestedCount);
         }
-    }
 
-    public class Coach
-    {
-        public List<Seat> Seats { get; } = new List<Seat>();
-        public string CoachName { get; }
-
-        public Coach(string coachName)
+        protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            CoachName = coachName;
-        }
-
-        public void AddSeat(Seat seat)
-        {
-            Seats.Add(seat);
-        }
-
-        public ReservationAttempt BuildReservationAttempt(string trainId, int seatsRequestedCount)
-        {
-            var availableSeats = Seats.Where(s => s.IsAvailable()).Take(seatsRequestedCount);
-
-            return new ReservationAttempt(trainId, seatsRequestedCount, availableSeats);
+            return new object[] {TrainId, new Dictionary<string, Coach>(Coaches)};
         }
     }
 }

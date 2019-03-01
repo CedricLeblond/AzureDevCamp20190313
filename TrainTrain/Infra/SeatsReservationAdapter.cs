@@ -1,10 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using TrainTrain.Domain;
 
-namespace TrainTrain
+namespace TrainTrain.Infra
 {
     public class SeatsReservationAdapter
     {
+        private readonly ITicketOffice _ticketOffice;
+
+        public SeatsReservationAdapter(ITicketOffice ticketOffice)
+        {
+            _ticketOffice = ticketOffice;
+        }
+
         public static string AdaptReservation(Reservation reservation)
         {
             return
@@ -33,6 +42,11 @@ namespace TrainTrain
             sb.Append("]");
 
             return sb.ToString();
+        }
+
+        public async Task<string> ReserveAsync(string trainId, int seatsRequestedCount)
+        {
+            return AdaptReservation(await _ticketOffice.Reserve(trainId, seatsRequestedCount));
         }
     }
 }

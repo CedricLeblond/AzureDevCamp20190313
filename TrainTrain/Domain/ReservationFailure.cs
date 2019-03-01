@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TrainTrain
+namespace TrainTrain.Domain
 {
     public class ReservationFailure : Reservation
     {

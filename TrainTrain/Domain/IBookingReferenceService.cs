@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TrainTrain
+namespace TrainTrain.Domain
 {
     public interface IBookingReferenceService
     {

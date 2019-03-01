@@ -1,6 +1,4 @@
-using System;
-
-namespace TrainTrain
+namespace TrainTrain.Domain
 {
     public static class ThresholdManager
     {

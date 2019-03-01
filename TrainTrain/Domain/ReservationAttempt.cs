@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace TrainTrain
+namespace TrainTrain.Domain
 {
     public class ReservationAttempt
     {
         public string TrainId { get; }
-        public List<Seat> Seats { get; }
+        public List<Seat> Seats { get; private set; }
         public string BookingReference { get; private set; }
         public int SeatsRequestedCount { get; }
 
@@ -25,10 +25,13 @@ namespace TrainTrain
         public void AssignBookingReference(string bookingReference)
         {
             BookingReference = bookingReference;
+            List<Seat> seats = new List<Seat>();
             foreach (var seat in Seats)
             {
-                seat.BookingRef = bookingReference;
+                seats.Add(new Seat(seat.CoachName, seat.SeatNumber, BookingReference));
             }
+
+            Seats = seats;
         }
 
         public Reservation Confirm()

@@ -1,4 +1,4 @@
-﻿namespace TrainTrain
+﻿namespace TrainTrain.Infra
 {
     public class SeatJsonPoco
     {

@@ -1,19 +1,13 @@
 ﻿using System.Threading.Tasks;
 
-namespace TrainTrain
+namespace TrainTrain.Domain
 {
-    public class WebTicketManager
+    public class TicketOffice : ITicketOffice
     {
         private readonly ITrainDataService _trainDataService;
         private readonly IBookingReferenceService _bookingReferenceService;
-        private const string UriTrainDataService = "http://localhost:50680";
-        private const string UriBookingReferenceService = "http://localhost:51691/";
 
-        public WebTicketManager():this(new TrainDataServiceAdapter(UriTrainDataService), new BookingReferenceServiceAdapter(UriBookingReferenceService))
-        {
-            
-        }
-        public WebTicketManager(ITrainDataService trainDataService, IBookingReferenceService bookingReferenceService)
+        public TicketOffice(ITrainDataService trainDataService, IBookingReferenceService bookingReferenceService)
         {
             _trainDataService = trainDataService;
             _bookingReferenceService = bookingReferenceService;
