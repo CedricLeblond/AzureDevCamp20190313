@@ -1,56 +1,84 @@
-# kata-LegacyTrain
-Kata on how to refactor a typical legacy code base (directly inspired by [Emily Bache's kata](https://github.com/emilybache/KataTrainReservation).
+# Pr√©parer la modernization de vos applications avec les containers
 
-Too many projects have layered-based...
+* https://github.com/42skillz/AzureDevCamp20190313
 
-## Contexte: 
-SSII a gagnÈ un appel d'offre pour mise en oeuvre rapide d'un logiciel de rÈservation de siËges dans les trains.
-AprËs avoir dÈveloppÈ une premiËre verison de l'appli, la SSII a continuÈe a faire evoluer le systËme jusqu'‡ arriver ‡ une situation de blocage: le client demande une modification de l'algoithme de reservation ce qui semble impossible ‡ la SSII (qui plus est, ‡ perdu entre-temps tous ses dÈveloppeurs partis faire autre chose de plus intÈressant).
-La SSII a jetÈe l'Èponge en produisant un avenant/devis hors de prix pour le client qui nous sollicite pour "reprendre le dossier".
+## Informations
 
-Nous arrivons donc sur une code base assez moche, pour laquelle nous n'avons plus de dÈveloppeurs pour nous expliquer leurs intentions initiales et justifier de leurs choix. Heureusement pour nous, le client mets ‡ notre disposition un expert du domaine pendant 3 heures pour rÈpondre ‡ nos questions.
+* Le code est tir√© d'un livecoding 42 skillz (@tpierrain & @brunoboucard)
+	* Code en C# sur .NET Core 2.1 https://github.com/42skillz/liveCoding-LegacyTrain
+	* Une version Java 1.8 est disponible https://github.com/42skillz/liveCoding-LegacyTrain-java
+	* Qui est lui m√™me inspir√© par https://github.com/emilybache/KataTrainReservation
 
-On est assez inquiet par la difficultÈ potentielle, mais comme on est joeur on a acceptÈ cette mission mais on compte sur vous pour nous aider.
+* Vid√©os
+	* Apr√®s midi du DDD https://www.youtube.com/watch?v=qzygjKpFSq4&t=4311s
+	* How To Distill The Core Domain From Your Legacy App - Explore DDD https://www.youtube.com/watch?v=mZzPwt9vhHM&t=4301s
+	* Distill the Core Domain from Your Legacy App - DDD Europe 2018 https://www.youtube.com/watch?v=F3DV9YDeA6Q&t=1527s
 
-La nouvelle feature est de supporter une autre faÁon de reserver des places de trains pour un autre grand distributeur qui n'aime pas du tout notre format JSON de retour => on va donc lui exposer un nouveau entry point pour supporter son besoin.
-TrainTrainCorp se rends compte qu'avec l'arrivÈe de ce clients et les volumes Ènormes corrspondant attendus => mettre ‡ jour l'algo de rÈservation en introduisant une nouvelle rËgle : "Dans l'idÈal, ne pas charger les voitures du train ‡ plus de 70% de leur capacitÈ."
+* Services
+	* TrainDataService: http://localhost:50680/api/data_for_train/341RTFA
+	* BookingReferenceService: http://localhost:51691/booking_reference
+	* TrainTrain: http://localhost:53801/api/reservations?trainId=express_20008&numberOfSeats=3
 
-Couplet sur le contexte organisationel : 
- - On a externalisÈ le TrainDataService pour des questions de scalabilitÈ
- - On a externalisÈ le BookingReferenceService pour rÈpondre ‡ une contrainte rÈglementaire EuropÈene (trouver un truc rigolo et absurde).
+## Explication du m√©tier
 
-## Description de l'architecture
-On a rÈcupÈrÈ le diagramme suivant qui a l'air d'etre ‡ jour et qu'on vous commente.
+* 11H00
+* Dur√©e: 15 minutes
+* Qui sommes-nous (TrainTrain)
+* Expliquer de l'architecture actuelle (skechnotes)
+* Illustrer les r√®gles m√©tiers
 
+## D√©mo "All in one container"
 
-Montrer dessin.
+* 11H15
+* Dur√©e: 20 minutes
+* Branche: Livecode1
+* D√©mo: ex√©cution locale puis Clean the deck
+* K8s: 3 containers Docker (sans K8s)
 
+## Expliquer l'architecture K8s
 
-## Etapes
+* 11H35
+* Dur√©e: 5 minutes
+* Explication de l'architecture K8s avec les service Train & HassanCehef (dessin)
 
-1. On rajoute des tests d'acceptance sur les uses cases intiaux (Pas plus de 70% du train et pas de reservation a cheval sur 2 voitures)
-	- Surprise : la deuxieme regle (non chevauchement) n'est pas implÈmentÈe... Discussion avec l'expert qui n'en croit pas ses yeux.
-	- On propose au client d'implÈmenter cette rËgle en mÍme temps que la nouvelle feature (la rËgle sera valable quelque soit les modalitÈs de rÈservation (historique et nouveau).
+## D√©mo "Tester WebTickerManager"
 
-2. On rajoute 1 test d'acceptance sur la nouvelle feature -> nouveau format de retour sur scenarii avec moins de 70% de charge par voiture
+* 11H40
+* Dur√©e: 20 minutes
+* Branche: Livecode2
+* Demo: Poser un 1er test => casser une d√©pendance (TrainDataServiceAdapter)
+* Demo: LiveCode2_after_2_tests & monter le r√©sultat
+* K8s: On pousse dans K8s deux containers s√©par√©s
+  * TrainTrain
+  * HassanCehef
 
-3. On fait Èmerger le concept de Coach qui n'existait pas dans le code existant
-4. On sÈpare bien le code du domaine (plus du tout anÈmique) avec le code technique
-5. On extrait le format de sÈrialization du domaine mÈtier en le situant dans des adapteurs ‡ la pÈriphÈrie du systËme (archi hexagonale FTW)
+## 12H00 "D√©jeuner"
 
-En route : 
- - on se sera dÈbarrassÈ le l'Ètat des trains persistÈs/cachÈs dans le service TrainTrain (‡ tord, car d'autres gens peuvent modifier les reservations des trains via le TrainData service)
- - on se sera dÈbarrassÈ de l'ORM
- 
+## C'est quoi un microservice
 
- Suite ‡ notre refactoring, on peut commencer ‡ avoir des discussions intÈressantes avec le mÈtier sur un autre problËme qui le taraude: la modification de la topologies des trains ‡ postÈriori qui Ètait problÈmatique avant a cause du caching des trains du service TrainTrain.
+* 13H00
+* Dur√©e: 10 minutes
+* Pr√©senter quelques slides MS
 
+## D√©mo "Probl√®me m√©tier en production"
 
+* 13H10
+* Dur√©e: 30 minutes
+* Branche: Livecode3_issue_in_production
+* On re√ßoit un message du support avec la description: 
+  * train with 2 coaches and 9 seats already reserved in the first coach
+* Cr√©ation d'un test => rouge
+* Cr√©ation du type coach en TDD
+* Test corriger
+* Branche: Livecode3_bug_fixed
+* K8s: On repousse √† nouveau dans le K8s, mais avec du load balancing des services
 
-T-Shirts:
- - le client ‡ toujours raison (bleu acier)
- - l'Èquipe du Train-Train (rose pÈtant)
+## Conclusion "Peut-on aller plus loin ...""
 
-
-
- sklmk
+* 13H40
+* Dur√©e: 20 minutes
+* Echanges: Pour les microservices on doit respecter quelques r√®gles:
+  * Un ou deux comportements par microservice
+  * Compl√®tement test√©
+  * Une architecture logicielle hexagonale
+* Branche: Livecode4
