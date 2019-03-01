@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E1B58B83-F742-4146-A88C-76FA98711FA8}"
 	ProjectSection(SolutionItems) = preProject
 		Backlog.md = Backlog.md
-		MS Azure Dev 13 Mars.md = MS Azure Dev 13 Mars.md
+		README Livecoding.md = README Livecoding.md
 		README.md = README.md
 	EndProjectSection
 EndProject
