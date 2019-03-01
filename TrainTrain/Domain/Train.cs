@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Value;
+using Value.Shared;
 
 namespace TrainTrain.Domain
 {
@@ -24,7 +25,7 @@ namespace TrainTrain.Domain
         }
 
         private string TrainId { get; }
-        private Dictionary<string, Coach> Coaches { get; }
+        public Dictionary<string, Coach> Coaches { get; }
 
         private List<Seat> Seats
         {
@@ -51,7 +52,7 @@ namespace TrainTrain.Domain
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            return new object[] {TrainId, new Dictionary<string, Coach>(Coaches)};
+            return new object[] {TrainId, new DictionaryByValue<string, Coach>(Coaches)};
         }
     }
 }

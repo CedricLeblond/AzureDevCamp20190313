@@ -16,6 +16,10 @@ namespace TrainTrain.Domain
             BookingRef = bookingRef;
         }
 
+        public Seat(string coachName, int seatNumber):this(coachName, seatNumber, string.Empty)
+        {
+        }
+
         public bool IsAvailable()
         {
             return string.IsNullOrEmpty(BookingRef);

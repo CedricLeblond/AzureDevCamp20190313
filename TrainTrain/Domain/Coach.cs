@@ -14,7 +14,7 @@ namespace TrainTrain.Domain
         {
         }
 
-        private Coach(string coachName, List<Seat> seats)
+        public Coach(string coachName, List<Seat> seats)
         {
             CoachName = coachName;
             Seats = seats;
