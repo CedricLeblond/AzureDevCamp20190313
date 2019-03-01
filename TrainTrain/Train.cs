@@ -29,7 +29,7 @@ namespace TrainTrain
             get { return Coaches.Values.SelectMany(c => c.Seats).ToList(); }
         }
 
-        public bool DoesNotExceedTrainMaxCapacity(int seatsRequestedCount)
+        public bool DoesNotExceedOverallTrainCapacity(int seatsRequestedCount)
         {
             return ReservedSeats + seatsRequestedCount <= Math.Floor(ThresholdManager.GetMaxRes() * GetMaxSeat());
         }
