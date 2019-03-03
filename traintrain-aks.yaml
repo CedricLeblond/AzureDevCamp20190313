@@ -1,0 +1,52 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+
+metadata:
+  name: traintrain
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: traintrain
+
+    spec:
+      containers:
+      - name: hassancehef-bookingreferenceservice
+        image: fabmedicalced.azurecr.io/hassancehefbookingreferenceservice
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://*:8080
+        ports:
+        - containerPort: 8080
+          name: bookingref
+
+      - name: hassancehef-traindataservice
+        image: fabmedicalced.azurecr.io/hassanceheftraindataservice
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://*:8090
+        ports:
+        - containerPort: 8090
+          name: traindata
+
+      - name: traintrain-api
+        image: fabmedicalced.azurecr.io/traintrainapi
+        ports:
+        - containerPort: 80
+          name: api
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: traintrain
+
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: traintrain
