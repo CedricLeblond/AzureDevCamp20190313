@@ -9,8 +9,8 @@ namespace TrainTrain
     {
         private readonly ITrainDataService _trainDataService;
         private readonly IBookingReferenceService _bookingReferenceService;
-        private const string UriTrainDataService = "http://localhost:50680";
-        private const string UriBookingReferenceService = "http://localhost:51691/";
+        private const string UriTrainDataService = "http://hassancehef.traindataservice";
+        private const string UriBookingReferenceService = "http://hassancehef.bookingreferenceservice";
 
         public WebTicketManager():this(new TrainDataServiceAdapter(UriTrainDataService), new BookingReferenceServiceAdapter(UriBookingReferenceService))
         {
