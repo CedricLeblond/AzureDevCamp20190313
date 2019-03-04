@@ -1,20 +1,20 @@
 version: '3.4'
 
 services:
-  hassancehef.bookingreferenceservice:
+  hassancehef-bookingreferenceservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
 
-  hassancehef.traindataservice:
+  hassancehef-traindataservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
 
 
-  traintrain.api:
+  traintrain-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
