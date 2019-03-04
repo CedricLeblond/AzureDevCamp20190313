@@ -1,19 +1,19 @@
 version: '3.4'
 
 services:
-  hassancehef.bookingreferenceservice:
+  hassancehef-bookingreferenceservice:
     image: ${DOCKER_REGISTRY-}hassancehefbookingreferenceservice
     build:
       context: .
       dockerfile: HassanCehef/HassanCehef.BookingReferenceService/Dockerfile
 
-  hassancehef.traindataservice:
+  hassancehef-traindataservice:
     image: ${DOCKER_REGISTRY-}hassanceheftraindataservice
     build:
       context: .
       dockerfile: HassanCehef/HassanCehef.TrainDataService/Dockerfile
 
-  traintrain.api:
+  traintrain-api:
     image: ${DOCKER_REGISTRY-}traintrainapi
     build:
       context: .

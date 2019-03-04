@@ -1,0 +1,108 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+
+metadata:
+  name: hassancehef-bookingreferenceservice
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hassancehef-bookingreferenceservice
+
+    spec:
+      containers:
+      - name: hassancehef-bookingreferenceservice
+        image: fabmedicalced.azurecr.io/hassancehefbookingreferenceservice
+        ports:
+        - containerPort: 80
+          name: bookingref
+
+---
+
+apiVersion: apps/v1beta1
+kind: Deployment
+
+metadata:
+  name: hassancehef-traindataservice
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hassancehef-traindataservice
+
+    spec:
+      containers:
+      - name: hassancehef-traindataservice
+        image: fabmedicalced.azurecr.io/hassanceheftraindataservice
+        ports:
+        - containerPort: 80
+          name: traindata
+
+---
+
+apiVersion: apps/v1beta1
+kind: Deployment
+
+metadata:
+  name: traintrain-api
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: traintrain-api
+
+    spec:
+      containers:
+      - name: traintrain-api
+        image: fabmedicalced.azurecr.io/traintrainapi
+        ports:
+        - containerPort: 80
+          name: api
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hassancehef-bookingreferenceservice
+
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: hassancehef-bookingreferenceservice
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hassancehef-traindataservice
+
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: hassancehef-traindataservice
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: traintrain-api
+
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: traintrain-api
