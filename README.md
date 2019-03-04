@@ -27,7 +27,7 @@
 * Expliquer de l'architecture actuelle (skechnotes)
 * Illustrer les règles métiers
 
-## Démo "All in one container"
+## Démo "Clean the deck, Docker containers"
 
 * 11H15
 * Durée: 20 minutes
@@ -47,10 +47,11 @@
 * Durée: 20 minutes
 * Branche: Livecode2
 * Demo: Poser un 1er test => casser une dépendance (TrainDataServiceAdapter)
-* Demo: LiveCode2_after_2_tests & monter le résultat
-* K8s: On pousse dans K8s deux containers séparés
-  * TrainTrain
-  * HassanCehef
+* Demo: LiveCode2_after_2_tests & montrer le résultat
+* K8s: On pousse dans K8s 3 pods séparés
+  * TrainTrain-Api
+  * HassanCehef-BookingReferenceService
+  * HassanCehef-TrainDataService
 
 ## 12H00 "Déjeuner"
 
@@ -71,7 +72,7 @@
 * Création du type coach en TDD
 * Test corriger
 * Branche: Livecode3_bug_fixed
-* K8s: On repousse à nouveau dans le K8s, mais avec du load balancing des services
+* K8s: On repousse à nouveau dans le K8s, avec des replicas pour une haute disponibilité
 
 ## Conclusion "Peut-on aller plus loin ...""
 
