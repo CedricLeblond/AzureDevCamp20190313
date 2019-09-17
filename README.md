@@ -39,7 +39,7 @@
 
 * 11H35
 * Durée: 5 minutes
-* Explication de l'architecture K8s avec les service Train & HassanCehef (dessin)
+* Explication de l'architecture K8s avec les service Train & Railway (dessin)
 
 ## Démo "Tester WebTickerManager"
 
@@ -50,8 +50,8 @@
 * Demo: LiveCode2_after_2_tests & montrer le résultat
 * K8s: On pousse dans K8s 3 pods séparés
   * TrainTrain-Api
-  * HassanCehef-BookingReferenceService
-  * HassanCehef-TrainDataService
+  * Railway-BookingReferenceService
+  * Railway-TrainDataService
 
 ## 12H00 "Déjeuner"
 
