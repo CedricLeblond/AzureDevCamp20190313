@@ -2,19 +2,19 @@ apiVersion: apps/v1beta1
 kind: Deployment
 
 metadata:
-  name: hassancehef-bookingreferenceservice
+  name: railway-bookingreferenceservice
 
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: hassancehef-bookingreferenceservice
+        app: railway-bookingreferenceservice
 
     spec:
       containers:
-      - name: hassancehef-bookingreferenceservice
-        image: fabmedicalced.azurecr.io/hassancehefbookingreferenceservice
+      - name: railway-bookingreferenceservice
+        image: fabmedicalced.azurecr.io/railwaybookingreferenceservice
         ports:
         - containerPort: 80
           name: bookingref
@@ -25,19 +25,19 @@ apiVersion: apps/v1beta1
 kind: Deployment
 
 metadata:
-  name: hassancehef-traindataservice
+  name: railway-traindataservice
 
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: hassancehef-traindataservice
+        app: railway-traindataservice
 
     spec:
       containers:
-      - name: hassancehef-traindataservice
-        image: fabmedicalced.azurecr.io/hassanceheftraindataservice
+      - name: railway-traindataservice
+        image: fabmedicalced.azurecr.io/railwaytraindataservice
         ports:
         - containerPort: 80
           name: traindata
@@ -70,28 +70,28 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hassancehef-bookingreferenceservice
+  name: railway-bookingreferenceservice
 
 spec:
   type: ClusterIP
   ports:
   - port: 80
   selector:
-    app: hassancehef-bookingreferenceservice
+    app: railway-bookingreferenceservice
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: hassancehef-traindataservice
+  name: railway-traindataservice
 
 spec:
   type: ClusterIP
   ports:
   - port: 80
   selector:
-    app: hassancehef-traindataservice
+    app: railway-traindataservice
 
 ---
 

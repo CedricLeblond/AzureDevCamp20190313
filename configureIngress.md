@@ -23,7 +23,7 @@ helm install stable/cert-manager --namespace default --set ingressShim.defaultIs
 kubectl -n default apply -f cluster-issuer.yaml
 
 ## set ingress 
-kubectl -n default apply -f hassancehef-ingress.yaml
+kubectl -n default apply -f railway-ingress.yaml
 
 ## get tls-secret
 kubectl describe certificate tls-secret

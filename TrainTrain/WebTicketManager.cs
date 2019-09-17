@@ -6,8 +6,8 @@ namespace TrainTrain
     {
         private readonly ITrainDataService _trainDataService;
         private readonly IBookingReferenceService _bookingReferenceService;
-        private const string UriTrainDataService = "http://hassancehef-traindataservice";
-        private const string UriBookingReferenceService = "http://hassancehef-bookingreferenceservice";
+        private const string UriTrainDataService = "http://railway-traindataservice";
+        private const string UriBookingReferenceService = "http://railway-bookingreferenceservice";
 
         public WebTicketManager():this(new TrainDataServiceAdapter(UriTrainDataService), new BookingReferenceServiceAdapter(UriBookingReferenceService))
         {

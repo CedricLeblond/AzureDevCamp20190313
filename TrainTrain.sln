@@ -21,7 +21,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8s", "K8s", "{94ED069A-5914-47C5-AC7A-48EB8F680188}"
 	ProjectSection(SolutionItems) = preProject
 		configureIngress.md = configureIngress.md
-		hassancehef-ingress.yaml = hassancehef-ingress.yaml
+		railway-ingress.yaml = railway-ingress.yaml
 		traintrain-aks.yaml = traintrain-aks.yaml
 	EndProjectSection
 EndProject
