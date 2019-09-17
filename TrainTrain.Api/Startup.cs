@@ -10,7 +10,7 @@ namespace TrainTrain.Api
 {
     public class Startup
     {
-        private const string UriTrainDataService = "http://localhost:50680";
+        private const string UriTrainDataService = "http://localhost:51690";
         private const string UriBookingReferenceService = "http://localhost:51691/";
 
         public Startup(IConfiguration configuration)
