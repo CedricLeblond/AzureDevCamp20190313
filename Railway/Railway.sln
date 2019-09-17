@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HassanCehef.TrainDataService", "HassanCehef.TrainDataService\HassanCehef.TrainDataService.csproj", "{AF367F6E-8D7F-4B4F-950B-5E8702E44B29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Railway.TrainDataService", "Railway.TrainDataService\Railway.TrainDataService.csproj", "{AF367F6E-8D7F-4B4F-950B-5E8702E44B29}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HassanCehef.BookingReferenceService", "HassanCehef.BookingReferenceService\HassanCehef.BookingReferenceService.csproj", "{214140EA-BDA3-46ED-B1D0-5523F6F4F226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Railway.BookingReferenceService", "Railway.BookingReferenceService\Railway.BookingReferenceService.csproj", "{214140EA-BDA3-46ED-B1D0-5523F6F4F226}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

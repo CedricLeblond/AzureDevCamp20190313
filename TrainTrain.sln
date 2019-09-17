@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HassanCehef.TrainDataService", "HassanCehef\HassanCehef.TrainDataService\HassanCehef.TrainDataService.csproj", "{B3F213E3-856A-4590-8F48-C0F7566EF36C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Railway.TrainDataService", "Railway\Railway.TrainDataService\Railway.TrainDataService.csproj", "{B3F213E3-856A-4590-8F48-C0F7566EF36C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HassanCehef.BookingReferenceService", "HassanCehef\HassanCehef.BookingReferenceService\HassanCehef.BookingReferenceService.csproj", "{4CEACF36-1C9C-4022-936F-D48F7A62B930}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Railway.BookingReferenceService", "Railway\Railway.BookingReferenceService\Railway.BookingReferenceService.csproj", "{4CEACF36-1C9C-4022-936F-D48F7A62B930}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrainTrain", "TrainTrain\TrainTrain.csproj", "{D084499B-38BF-451D-9603-B10DD7CD15BC}"
 EndProject

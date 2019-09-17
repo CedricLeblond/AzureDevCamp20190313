@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace HassanCehef.TrainDataService.Models
+namespace Railway.TrainDataService.Models
 {
     public class  Seat
     {

@@ -9,8 +9,8 @@ namespace TrainTrain
 {
     public class WebTicketManager
     {
-        private const string UriBookingReferenceService = "http://hassancehef.bookingreferenceservice/";
-        private const string UriTrainDataService = "http://hassancehef.traindataservice";
+        private const string UriBookingReferenceService = "http://railway.bookingreferenceservice/";
+        private const string UriTrainDataService = "http://railway.traindataservice";
 
         public async Task<string> Reserve(string trainId, int seatsRequestedCount)
         {
