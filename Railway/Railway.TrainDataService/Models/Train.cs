@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace HassanCehef.TrainDataService.Models
+namespace Railway.TrainDataService.Models
 {
     public class Train
     {

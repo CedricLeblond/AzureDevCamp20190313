@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HassanCehef.TrainDataService.Models
+namespace Railway.TrainDataService.Models
 {
     public class TrainUpdateDTO
     {

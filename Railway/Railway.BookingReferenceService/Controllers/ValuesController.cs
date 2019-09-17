@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HassanCehef.BookingReferenceService.Controllers
+namespace Railway.BookingReferenceService.Controllers
 {
     [Route("booking_reference")]
     public class ValuesController : Controller
