@@ -10,7 +10,7 @@ namespace TrainTrain
     public class WebTicketManager
     {
         private const string uriBookingReferenceService = "http://localhost:51691/";
-        private const string urITrainDataService = "http://localhost:50680";
+        private const string uriTrainDataService = "http://localhost:51690";
 
         public async Task<string> Reserve(string train, int seats)
         {
@@ -76,7 +76,7 @@ namespace TrainTrain
                     using (var client = new HttpClient())
                     {
                         var value = new MediaTypeWithQualityHeaderValue("application/json");
-                        client.BaseAddress = new Uri(urITrainDataService);
+                        client.BaseAddress = new Uri(uriTrainDataService);
                         client.DefaultRequestHeaders.Accept.Clear();
                         client.DefaultRequestHeaders.Accept.Add(value);
 
@@ -163,7 +163,7 @@ namespace TrainTrain
             using (var client = new HttpClient())
             {
                 var value = new MediaTypeWithQualityHeaderValue("application/json");
-                client.BaseAddress = new Uri(urITrainDataService);
+                client.BaseAddress = new Uri(uriTrainDataService);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(value);
 
