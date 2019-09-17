@@ -13,8 +13,8 @@ spec:
 
     spec:
       containers:
-      - name: hassancehef-bookingreferenceservice
-        image: fabmedicalced.azurecr.io/hassancehefbookingreferenceservice
+      - name: railway-bookingreferenceservice
+        image: fabmedicalced.azurecr.io/railwaybookingreferenceservice
         env:
         - name: ASPNETCORE_URLS
           value: http://*:8080
@@ -22,8 +22,8 @@ spec:
         - containerPort: 8080
           name: bookingref
 
-      - name: hassancehef-traindataservice
-        image: fabmedicalced.azurecr.io/hassanceheftraindataservice
+      - name: railway-traindataservice
+        image: fabmedicalced.azurecr.io/railwaytraindataservice
         env:
         - name: ASPNETCORE_URLS
           value: http://*:8090

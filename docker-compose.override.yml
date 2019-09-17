@@ -1,14 +1,14 @@
 version: '3.4'
 
 services:
-  hassancehef.bookingreferenceservice:
+  railway.bookingreferenceservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://*:8080
     ports:
       - "8080"
 
-  hassancehef.traindataservice:
+  railway.traindataservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://*:8090
