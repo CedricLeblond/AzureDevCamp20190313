@@ -39,7 +39,7 @@
 
 * 11H35
 * Durée: 5 minutes
-* Explication de l'architecture K8s avec les service Train & HassanCehef (dessin)
+* Explication de l'architecture K8s avec les service Train & Railway (dessin)
 
 ## Démo "Tester WebTickerManager"
 
@@ -50,7 +50,7 @@
 * Demo: LiveCode2_after_2_tests & monter le résultat
 * K8s: On pousse dans K8s deux containers séparés
   * TrainTrain
-  * HassanCehef
+  * Railway
 
 ## 12H00 "Déjeuner"
 
