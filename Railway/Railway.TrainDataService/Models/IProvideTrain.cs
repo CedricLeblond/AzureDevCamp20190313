@@ -1,4 +1,4 @@
-﻿namespace HassanCehef.TrainDataService.Models
+﻿namespace Railway.TrainDataService.Models
 {
     public interface IProvideTrain
     {
