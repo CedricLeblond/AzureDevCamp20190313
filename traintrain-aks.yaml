@@ -1,43 +1,47 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: railway-bookingreferenceservice
 
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: railway-bookingreferenceservice
+
   template:
     metadata:
       labels:
         app: railway-bookingreferenceservice
-
     spec:
       containers:
       - name: railway-bookingreferenceservice
-        image: fabmedicalced.azurecr.io/railwaybookingreferenceservice
+        image: cedricleblond/railwaybookingreferenceservice
         ports:
         - containerPort: 80
           name: bookingref
 
 ---
 
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: railway-traindataservice
 
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: railway-traindataservice
+
   template:
     metadata:
       labels:
         app: railway-traindataservice
-
     spec:
       containers:
       - name: railway-traindataservice
-        image: fabmedicalced.azurecr.io/railwaytraindataservice
+        image: cedricleblond/railwaytraindataservice
         ports:
         - containerPort: 80
           name: traindata
@@ -46,21 +50,23 @@ spec:
 
 apiVersion: apps/v1beta1
 kind: Deployment
-
 metadata:
   name: traintrain-api
 
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: traintrain-api
+
   template:
     metadata:
       labels:
         app: traintrain-api
-
     spec:
       containers:
       - name: traintrain-api
-        image: fabmedicalced.azurecr.io/traintrainapi
+        image: cedricleblond/traintrainapi
         ports:
         - containerPort: 80
           name: api
