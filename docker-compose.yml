@@ -1,17 +1,17 @@
 version: '3.4'
 
 services:
-  hassancehef-bookingreferenceservice:
-    image: ${DOCKER_REGISTRY-}hassancehefbookingreferenceservice
+  railway-bookingreferenceservice:
+    image: ${DOCKER_REGISTRY-}railwaybookingreferenceservice
     build:
       context: .
-      dockerfile: HassanCehef/HassanCehef.BookingReferenceService/Dockerfile
+      dockerfile: Railway/Railway.BookingReferenceService/Dockerfile
 
-  hassancehef-traindataservice:
-    image: ${DOCKER_REGISTRY-}hassanceheftraindataservice
+  railway-traindataservice:
+    image: ${DOCKER_REGISTRY-}railwaytraindataservice
     build:
       context: .
-      dockerfile: HassanCehef/HassanCehef.TrainDataService/Dockerfile
+      dockerfile: Railway/Railway.TrainDataService/Dockerfile
 
   traintrain-api:
     image: ${DOCKER_REGISTRY-}traintrainapi
