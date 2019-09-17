@@ -10,8 +10,8 @@ namespace TrainTrain
     public class WebTicketManager
     {
         private const string UriBookingReferenceService = "http://localhost:51691/";
-        private const string UriTrainDataService = "http://localhost:50680";
-
+        private const string UriTrainDataService = "http://localhost:51690";
+        
         public async Task<string> Reserve(string trainId, int seatsRequestedCount)
         {
             var jsonTrain = await GetTrain(trainId);
