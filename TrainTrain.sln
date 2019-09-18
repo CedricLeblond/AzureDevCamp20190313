@@ -20,8 +20,10 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8s", "K8s", "{94ED069A-5914-47C5-AC7A-48EB8F680188}"
 	ProjectSection(SolutionItems) = preProject
+		cluster-issuer.yaml = cluster-issuer.yaml
 		configureIngress.md = configureIngress.md
 		railway-ingress.yaml = railway-ingress.yaml
+		rbac-tiller.yaml = rbac-tiller.yaml
 		traintrain-aks.yaml = traintrain-aks.yaml
 	EndProjectSection
 EndProject
